@@ -29,6 +29,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.Html;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -38,7 +39,6 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 /**
  * This class provides access to notifications on the device.
@@ -179,7 +179,7 @@ public class Notification extends CordovaPlugin {
             public void run() {
 
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                dlg.setMessage(message);
+                dlg.setMessage(Html.fromHtml(message));
                 dlg.setTitle(title);
                 dlg.setCancelable(true);
                 dlg.setPositiveButton(buttonLabel,
@@ -219,7 +219,7 @@ public class Notification extends CordovaPlugin {
         Runnable runnable = new Runnable() {
             public void run() {
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                dlg.setMessage(message);
+                dlg.setMessage(Html.fromHtml(message));
                 dlg.setTitle(title);
                 dlg.setCancelable(true);
 
@@ -309,7 +309,7 @@ public class Notification extends CordovaPlugin {
                 promptInput.setTextColor(promptInputTextColor);
                 promptInput.setText(defaultText);
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                dlg.setMessage(message);
+                dlg.setMessage(Html.fromHtml(message));
                 dlg.setTitle(title);
                 dlg.setCancelable(true);
 

@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -520,7 +521,9 @@ public class Notification extends CordovaPlugin {
         AlertDialog dialog =  dlg.show();
         if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
             TextView messageview = (TextView)dialog.findViewById(android.R.id.message);
+
             messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);
+            messageview.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 }
